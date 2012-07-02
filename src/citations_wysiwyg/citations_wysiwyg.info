@@ -1,0 +1,8 @@
+name = "Citations Wysiwyg"
+description = "Add a citations button to Wysiwyg editors (CKEditor only for now)"
+core = 7.x
+package = User interface
+
+dependencies[] = wysiwyg
+dependencies[] = libraries
+dependencies[] = citations

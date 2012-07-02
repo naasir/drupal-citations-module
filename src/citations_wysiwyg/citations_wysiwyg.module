@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * @file
+ * The citations_wysiwyg module integrates into wysiwyg editors to make it easier to add citations.
+ */
+
+
+/**
+ * Implementation of hook_help().
+ */
+function citations_wysiwyg_help($path, $arg) {
+  switch ($path) {
+    case 'admin/modules#description':
+      // This description is shown in the listing at admin/modules.
+      return t('Citations WYSIWYG integration.');
+  }
+}
+
+/**
+ * Implementation of hook_wysiwyg_plugin().
+ */
+function citations_wysiwyg_wysiwyg_plugin($editor, $version) {
+  drupal_add_library('system', 'ui.dialog');
+  drupal_add_library('citations_wysiwyg', 'citations_wysiwyg');
+
+  $plugin = array(
+    'citations' => array(
+      'buttons' => array('citations' => t('Add Citation')),
+      /* 'url' => 'http://drupal.org/project/citations', */
+      'load' => TRUE,
+    ),
+  );
+  switch ($editor) {
+    case 'tinymce':
+      $plugin['citations']['filename'] = 'editor_plugin.js';
+      $plugin['citations']['path'] = drupal_get_path('module', 'citations_wysiwyg') . '/tinymce_plugin/';
+      return $plugin;
+      break;
+    case 'ckeditor':
+      $plugin['citations']['path'] = drupal_get_path('module', 'citations_wysiwyg') . '/ckeditor_plugin';
+      return $plugin;
+      break;
+  }
+}
+
+/**
+ * Implements hook_library().
+ */
+function citations_wysiwyg_library() {
+  $libraries['citations_wysiwyg'] = array(
+    'title' => 'Dialog.js',
+    'version' => '0.0.1',
+    'js' => array(
+      drupal_get_path('module', 'citations_wysiwyg') . '/citations_wysiwyg.js' => array(),
+    ),
+    'dependencies' => array(
+      array('citations', 'backbone'),
+    ),
+    'css' => array(
+      drupal_get_path('module', 'citations_wysiwyg') . '/citations_wysiwyg.css' => array(
+        'type' => 'file',
+        'media' => 'screen',
+      ),
+    )
+  );
+  return $libraries;
+}

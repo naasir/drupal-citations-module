@@ -1,0 +1,90 @@
+<!-- single contributor template -->
+<script type="text/template" id="citations-template-contributor">
+  <select data-bind="type">
+    <option>Author</option>
+    <option>Editor</option>
+    <option>Translator</option>
+  </select>
+  <span>
+    <input type="text" placeholder="First" data-bind="firstName" />
+    <input type="text" placeholder="MI" data-bind="middleInitial" />
+    <input type="text" placeholder="Last" data-bind="lastName" />
+  </span>
+  <i class="ui-icon ui-icon-trash citations-dialog-button-remove-contributor" title="Remove"></i>
+</script>
+
+<!-- website publication template -->
+<script type="text/template" id="citations-template-publication-website">
+  <legend>Website Info <i class="ui-icon ui-icon-triangle-1-s"></i></legend>
+  <fieldset>
+    <label>URL:</label>
+    <input type="text" data-bind="url" />
+  </fieldset>
+  <fieldset>
+    <label>Page Title:</label>
+    <input type="text" data-bind="pageTitle" />
+  </fieldset>
+  <fieldset>
+    <label>Website Title:</label>
+    <input type="text" data-bind="websiteTitle" />
+  </fieldset>
+  <fieldset>
+    <label>Date Published:</label>
+    <input type="date" data-bind="datePublished" />
+  </fieldset>
+  <fieldset>
+    <label>Date Accessed:</label>
+    <input type="date" data-bind="dateAccessed" />
+  </fieldset>
+</script>
+
+<!-- book publication template -->
+<script type="text/template" id="citations-template-publication-book">
+  <legend>Book Info <i class="ui-icon ui-icon-triangle-1-s"></i></legend>
+  <fieldset>
+    <label>Book Title:</label>
+    <input type="text" data-bind="bookTitle" />
+  </fieldset>
+  <fieldset>
+    <label>Chapter Title:</label>
+    <input type="text" data-bind="chapterTitle" />
+  </fieldset>
+  <fieldset>
+    <label>Publication Info:</label>
+    <input type="text" placeholder="Publisher" data-bind="publisher" />
+    <input type="text" placeholder="City" data-bind="cityPublished" />
+    <input type="date" placeholder="Year" data-bind="yearPublished" />
+  </fieldset>
+  <fieldset>
+    <label>Pages:</label>
+    <input type="text" data-bind="pages" />
+  </fieldset>
+</script>
+
+<!-- citation dialog template -->
+<script type="text/template" id="citations-template-dialog">
+  <menu>
+    <span class="active" data-type="website">Website</span>
+    <span data-type="book">Book</span>
+  </menu>
+  <div class="citations-dialog-inner">
+    <fieldset class="citations-dialog-publication">
+    </fieldset>
+    <fieldset class="citations-dialog-contributors">
+      <legend>Contributors <i class="ui-icon ui-icon-triangle-1-s"></i></legend>
+      <ul></ul>
+      <fieldset>
+        <a href="#" class="citations-dialog-button-add-contributor">Add contributor</a>
+      </fieldset>
+    </fieldset>
+    <!-- <fieldset class="citations-dialog-annotation"> -->
+    <!--   <legend>Annotation <i class="ui-icon ui-icon-triangle-1-s"></i></legend> -->
+    <!--   <fieldset> -->
+    <!--     <textarea data-bind="annotation"></textarea> -->
+    <!--   </fieldset> -->
+    <!-- </fieldset> -->
+    <fieldset>
+      <input type="button" class="citations-dialog-button-add-citation" value="Add citation" />
+    </fieldset>
+  </div>
+</script>

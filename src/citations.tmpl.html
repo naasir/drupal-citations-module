@@ -1,0 +1,39 @@
+<!-- citation marker template -->
+<script type="text/template" id="citations-template-marker">
+  <a id="<%- markerId %>" href="#<%- citationId %>" class="<%- cssClass %>">
+    <sup>[<%- index %>]</sup>
+  </a>
+</script>
+
+<!-- book citation template -->
+<script type="text/template" id="citations-template-book">
+  <% _.each(citation.contributors, function(contrib, index, list) { %>
+      <%= format(contrib.lastName, '{1}, ') %>
+      <% if(contrib.firstName) { print(contrib.firstName.charAt(0) + '.'); } %>
+      <% if(index < (list.length - 1)) { print('& '); } %>
+  <% }); %>
+  <%= format(citation.yearPublished, '({1}). ') %>
+  <%= format(citation.chapterTitle, '{1}. ') %>
+  <%= format(citation.bookTitle, '<em>{1}</em>') %>
+  <%= format(citation.pages, ' (p. {1})') %>.
+  <%= format(citation.cityPublished, '{1}: ') %>
+  <%= format(citation.publisher, '{1}.') %>
+</script>
+
+<!-- website citation template -->
+<script type="text/template" id="citations-template-website">
+  <% _.each(citation.contributors, function(contrib, index, list) { %>
+      <%= format(contrib.lastName, '{1}, ') %>
+      <% if(contrib.firstName) { print(contrib.firstName.charAt(0) + '.'); } %>
+      <% if(index < (list.length - 1)) { print('& '); } %>
+  <% }); %>
+  <%= format(citation.pageTitle, '{1}. ') %>
+  <%= format(citation.websiteTitle, '<em>{1}</em>. ') %>
+  <%= format(citation.dateAccessed, 'Retrieved {1}') %>
+  <%= format(citation.url, citation.dateAccessed ? ', from {1}' : '{1}') %>
+</script>
+
+<!-- unknown citation template -->
+<script type="text/template" id="citations-template-unknown">
+  <%- citation.text %>
+</script>

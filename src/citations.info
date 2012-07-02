@@ -1,0 +1,5 @@
+name = Citations
+description = Generates a well-formatted "References" section from citations added in-line while authoring content.
+core = 7.x
+
+dependencies[] = libraries
